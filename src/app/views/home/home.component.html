@@ -7,12 +7,14 @@
 <!-- Movie cards -->
 <div class="movie-cards">
   <div *ngFor="let movie of movies" class="card">
-    <h2>{{ movie.Title }}</h2>
-    <p>{{ movie.Description }}</p>
-    <p><strong>Rating:</strong> {{ movie.Rating }}</p>
-    <p><strong>Duration:</strong> {{ movie.Duration }}</p>
-    <p><strong>Genre:</strong> {{ movie.Genre }}</p>
-    <p><strong>Released Date:</strong> {{ movie['Released date'] }}</p>
-    <a [href]="movie['Trailer Link']" target="_blank">Watch Trailer</a>
+    <div class="card-overlay">
+      <div class="overlay-content">
+        <h2>{{ movie.Title }}</h2>
+        <p>{{ movie.Description }}</p>
+        <p><strong>Rating:</strong> {{ movie.Rating }}</p>
+        <p><strong>Duration:</strong> {{ movie.Duration }}</p>
+      </div>
+    </div>
+    <img [src]="movie.image" alt="{{ movie.Title }}" class="movie-image">
   </div>
 </div>

@@ -6,6 +6,7 @@
     "Duration": "2h 30 min",
     "Genre": "Action, Sci-Fi",
     "Released date": "3 September 2020",
+    "image": "assets/resources/Tenet.png",
     "Trailer Link": "https://www.youtube.com/watch?v=LdOM0x0XDMo"
   },
   {
@@ -15,6 +16,7 @@
     "Duration": "1h 57min",
     "Genre": "Action, Animation, Adventure",
     "Released date": "14 December 2018",
+    "image": "assets/resources/Spider Man.png",
     "Trailer Link": "https://www.youtube.com/watch?v=tg52up16eq0"
   },
   {
@@ -24,6 +26,7 @@
     "Duration": "2h 10min",
     "Genre": "Comedy, Crime, Drama",
     "Released date": "27 November 2019",
+    "image": "assets/resources/Knives Out.png",
     "Trailer Link": "https://www.youtube.com/watch?v=qGqiHJTsRkQ"
   },
   {
@@ -33,6 +36,7 @@
     "Duration": "2h 1min",
     "Genre": "Action, Adventure, Comedy",
     "Released date": "1 August 2014",
+    "image": "assets/resources/Guardians of The Galaxy.png",
     "Trailer Link": "https: //www.youtube.com/watch?v=d96cjJhvlMA"
   },
   {
@@ -42,6 +46,7 @@
     "Duration": "2h 21min",
     "Genre": "Action, Adventure, Sci-Fi",
     "Released date": "1 May 2015",
+    "image": "assets/resources/Avengers.png",
     "Trailer Link": "https: //www.youtube.com/watch?v=tmeOjFno6Do"
   }
 ]
