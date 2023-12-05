@@ -4,9 +4,15 @@
   <div class="heart-icon">❤️</div>
 </nav>
 
+<!-- Order buttons -->
+<div class="order-buttons">
+  <button (click)="sortByTitle()">Ordenar por Título</button>
+  <button (click)="sortByReleasedDate()">Ordenar por Fecha de Lanzamiento</button>
+</div>
+
 <!-- Movie cards -->
 <div class="movie-cards">
-  <div *ngFor="let movie of movies" class="card">
+  <div *ngFor="let movie of sortedMovies" class="card">
     <div class="card-overlay">
       <div class="overlay-content">
         <h2>{{ movie.Title }}</h2>
