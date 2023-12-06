@@ -5,19 +5,28 @@
   <button (click)="sortByReleasedDate()">Ordenar por Fecha de Lanzamiento</button>
 </div>
 
+
 <!-- Movie cards -->
 <div class="movie-cards">
   <div *ngFor="let movie of sortedMovies" class="card">
-    <a [routerLink]="['/movie/', movie.id]">
-    <div class="card-overlay">
-      <div class="overlay-content">
-        <h2>{{ movie.Title }}</h2>
-        <p>{{ movie.Description }}</p>
-        <p><strong>Rating:</strong> {{ movie.Rating }}</p>
-        <p><strong>Duration:</strong> {{ movie.Duration }}</p>
-      </div>
-    </div>
-    <img [src]="movie.image" alt="{{ movie.Title }}" class="movie-image">
+    <a [routerLink]="['/movie/', movie.id]" class="image-link">
+      <img [src]="movie.image" alt="{{ movie.Title }}" class="movie-image">
     </a>
+
+    <div class="movie-details">
+      <div class="header-bar">
+        <button (click)="toggleWatchlist(movie)" [ngClass]="{'watchlist-active': movie.isInWatchlist}">
+          <i class="fa fa-heart"></i>
+        </button>
+      </div>
+
+      <h2>{{ movie.Title }}</h2>
+      <p class="description">{{ movie.Description }}</p>
+      <p><strong>Rating:</strong> {{ movie.Rating }}</p>
+      <p><strong>Duration:</strong> {{ movie.Duration }}</p>
+    </div>
   </div>
 </div>
+
+
+

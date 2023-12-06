@@ -8,7 +8,8 @@
     "Genre": "Action, Sci-Fi",
     "Released date": "3 September 2020",
     "image": "assets/resources/Tenet.png",
-    "Trailer Link": "https://www.youtube.com/watch?v=LdOM0x0XDMo"
+    "Trailer Link": "https://www.youtube.com/watch?v=LdOM0x0XDMo",
+    "isInWatchlist": false
   },
   {
     "id": 2,
@@ -19,7 +20,8 @@
     "Genre": "Action, Animation, Adventure",
     "Released date": "14 December 2018",
     "image": "assets/resources/Spider Man.png",
-    "Trailer Link": "https://www.youtube.com/watch?v=tg52up16eq0"
+    "Trailer Link": "https://www.youtube.com/watch?v=tg52up16eq0",
+    "isInWatchlist": false
   },
   {
     "id": 3,
@@ -30,7 +32,8 @@
     "Genre": "Comedy, Crime, Drama",
     "Released date": "27 November 2019",
     "image": "assets/resources/Knives Out.png",
-    "Trailer Link": "https://www.youtube.com/watch?v=qGqiHJTsRkQ"
+    "Trailer Link": "https://www.youtube.com/watch?v=qGqiHJTsRkQ",
+    "isInWatchlist": false
   },
   {
     "id": 4,
@@ -41,7 +44,8 @@
     "Genre": "Action, Adventure, Comedy",
     "Released date": "1 August 2014",
     "image": "assets/resources/Guardians of The Galaxy.png",
-    "Trailer Link": "https: //www.youtube.com/watch?v=d96cjJhvlMA"
+    "Trailer Link": "https: //www.youtube.com/watch?v=d96cjJhvlMA",
+    "isInWatchlist": false
   },
   {
     "id": 5,
@@ -52,6 +56,7 @@
     "Genre": "Action, Adventure, Sci-Fi",
     "Released date": "1 May 2015",
     "image": "assets/resources/Avengers.png",
-    "Trailer Link": "https: //www.youtube.com/watch?v=tmeOjFno6Do"
+    "Trailer Link": "https: //www.youtube.com/watch?v=tmeOjFno6Do",
+    "isInWatchlist": false
   }
 ]

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Movie } from 'src/app/models/movie.model';
 import { GlobalService } from 'src/app/services/global.service';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -9,6 +10,7 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class HomeComponent implements OnInit {
   movies: any[] = [];
+  movie: Movie[] = [];
   sortedMovies: any[] = [];
 
   constructor(private movieService: MovieService, private globalService: GlobalService) { }
@@ -27,5 +29,27 @@ export class HomeComponent implements OnInit {
 
   sortByReleasedDate(): void {
     this.sortedMovies = [...this.movies].sort((a, b) => this.globalService.convertToDate(a['Released date']).getTime() - this.globalService.convertToDate(b['Released date']).getTime());
+  }
+
+  addToWatchlist(movie: Movie): void {
+    this.movieService.updateWatchlistStatus(movie);
+  }
+
+  toggleWatchlist(movie: any): void {
+    movie.isInWatchlist = !movie.isInWatchlist;
+    this.updateWatchlistLocalStorage();
+  }
+
+  loadWatchlistFromLocalStorage(): void {
+    const watchlistString = localStorage.getItem('watchlist');
+    const watchlist = watchlistString ? JSON.parse(watchlistString) : [];
+    this.movies.forEach(movie => {
+      movie.isInWatchlist = watchlist.includes(movie.id);
+    });
+  }
+
+  updateWatchlistLocalStorage(): void {
+    const watchlist = this.movies.filter(movie => movie.isInWatchlist).map(movie => movie.id);
+    localStorage.setItem('watchlist', JSON.stringify(watchlist));
   }
 }
