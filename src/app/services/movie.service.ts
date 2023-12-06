@@ -39,18 +39,22 @@ export class MovieService {
   }
 
   addToWatchlist(movie: Movie): void {
-    let watchlist = this.getWatchlistIdsSync();
-    watchlist = watchlist.concat(movie.id);
-    localStorage.setItem(this.watchlistKey, JSON.stringify(watchlist));
+    this.getWatchlistIds().subscribe(watchlist => {
+      watchlist = watchlist.concat(movie.id);
+      localStorage.setItem(this.watchlistKey, JSON.stringify(watchlist));
+    });
   }
 
   updateWatchlistStatus(movie: Movie): void {
-    movie.isInWatchlist = !movie.isInWatchlist;
-    if (movie.isInWatchlist) {
-      this.addToWatchlist(movie);
-    } else {
-      this.removeFromWatchlist(movie.id);
-    }
+    this.getWatchlistIds().subscribe(watchlist => {
+      movie.isInWatchlist = !movie.isInWatchlist;
+      if (movie.isInWatchlist) {
+        watchlist = watchlist.concat(movie.id);
+      } else {
+        watchlist = watchlist.filter((id) => id !== movie.id);
+      }
+      localStorage.setItem(this.watchlistKey, JSON.stringify(watchlist));
+    });
   }
 
   removeFromWatchlist(movieId: number): void {

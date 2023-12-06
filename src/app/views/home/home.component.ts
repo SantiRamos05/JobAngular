@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.movieService.getMovies().subscribe((data: any[]) => {
       this.movies = data;
+      this.loadWatchlistFromLocalStorage();
       this.sortedMovies = [...this.movies];
       console.log(this.movies);
     });
@@ -31,13 +32,12 @@ export class HomeComponent implements OnInit {
     this.sortedMovies = [...this.movies].sort((a, b) => this.globalService.convertToDate(a['Released date']).getTime() - this.globalService.convertToDate(b['Released date']).getTime());
   }
 
-  addToWatchlist(movie: Movie): void {
-    this.movieService.updateWatchlistStatus(movie);
+  addToWatchlist(movie: any): void {
+    this.movieService.addToWatchlist(movie);
   }
 
   toggleWatchlist(movie: any): void {
-    movie.isInWatchlist = !movie.isInWatchlist;
-    this.updateWatchlistLocalStorage();
+    this.movieService.updateWatchlistStatus(movie);
   }
 
   loadWatchlistFromLocalStorage(): void {
@@ -46,10 +46,5 @@ export class HomeComponent implements OnInit {
     this.movies.forEach(movie => {
       movie.isInWatchlist = watchlist.includes(movie.id);
     });
-  }
-
-  updateWatchlistLocalStorage(): void {
-    const watchlist = this.movies.filter(movie => movie.isInWatchlist).map(movie => movie.id);
-    localStorage.setItem('watchlist', JSON.stringify(watchlist));
   }
 }
