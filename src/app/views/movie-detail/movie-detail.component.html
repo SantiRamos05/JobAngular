@@ -1,0 +1,22 @@
+<div *ngIf="movie" class="movie-detail-container mb-2">
+  <div class="card mt-2 mb-2">
+    <div class="card-body">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img [src]="movie.image" alt="{{ movie.Title }}" class="img-fluid rounded-start" >
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">{{ movie.Title }}</h5>
+            <p class="card-text">{{ movie.Description }}</p>
+            <p class="card-text">Genre: {{ movie.Genre }}</p>
+            <p class="card-text"><small class="text-body-secondary">Rating: {{ movie.Rating }}</small></p>
+            <p class="card-text"><small class="text-body-secondary">Released date: {{ movie['Released date'] }}</small></p>
+            <p class="card-text"><small class="text-body-secondary">Duration: {{ movie.Duration }}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <iframe class="card-img-bottom" width="560" height="315" [src]="trailerUrl" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>
