@@ -1,21 +1,14 @@
 
-<!-- Order buttons -->
-<div class="order-buttons">
-  <button (click)="sortByTitle()">Ordenar por Título</button>
-  <button (click)="sortByReleasedDate()">Ordenar por Fecha de Lanzamiento</button>
-</div>
-
-
 <!-- Movie cards -->
 <div class="movie-cards">
-  <div *ngFor="let movie of sortedMovies" class="card">
+  <div *ngFor="let movie of watchlistMovies" class="card">
     <a [routerLink]="['/movie/', movie.id]" class="image-link">
       <img [src]="movie.image" alt="{{ movie.Title }}" class="movie-image">
     </a>
 
     <div class="movie-details">
       <div class="header-bar">
-        <button (click)="toggleWatchlist(movie)" [ngClass]="{'watchlist-active': movie.isInWatchlist}">
+        <button (click)="removeFromWatchlist(movie)" [ngClass]="{'watchlist-active': movie.isInWatchlist}">
           <i class="fa fa-heart"></i>
         </button>
       </div>

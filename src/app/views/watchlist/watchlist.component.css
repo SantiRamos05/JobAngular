@@ -1,0 +1,50 @@
+/* Movie card styles */
+.movie-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: 1px solid #ddd;
+  margin: 10px;
+  padding: 15px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.image-link {
+  align-self: center;
+}
+
+.movie-image {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.movie-details {
+  margin-top: 10px;
+}
+
+.header-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #3498db;
+  padding: 5px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: red;
+}
+
+
+.description {
+  color: #555;
+}

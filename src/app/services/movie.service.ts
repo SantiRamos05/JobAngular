@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, combineLatest, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { Movie } from '../models/movie.model';
@@ -24,19 +24,25 @@ export class MovieService {
     );
   }
 
-
-   getWatchlist(): Movie[] {
-    const watchlistStr = localStorage.getItem(this.watchlistKey);
-    return watchlistStr ? JSON.parse(watchlistStr) : [];
+  getWatchlist(): Observable<Movie[]> {
+    const watchlistIds = this.getWatchlistIds();
+    const movies = this.getMovies();
+    return combineLatest([watchlistIds, movies]).pipe(
+      map(([ids, allMovies]) => allMovies.filter(movie => ids.includes(movie.id)))
+    );
   }
 
+  getWatchlistIds(): Observable<number[]> {
+    const watchlistStr = localStorage.getItem(this.watchlistKey);
+    const watchlist = watchlistStr ? JSON.parse(watchlistStr) : [];
+    return of(watchlist);
+  }
 
   addToWatchlist(movie: Movie): void {
-    let watchlist = this.getWatchlist();
-    watchlist = watchlist.concat(movie);
+    let watchlist = this.getWatchlistIdsSync();
+    watchlist = watchlist.concat(movie.id);
     localStorage.setItem(this.watchlistKey, JSON.stringify(watchlist));
   }
-
 
   updateWatchlistStatus(movie: Movie): void {
     movie.isInWatchlist = !movie.isInWatchlist;
@@ -47,12 +53,17 @@ export class MovieService {
     }
   }
 
-
   removeFromWatchlist(movieId: number): void {
-    let watchlist = this.getWatchlist();
-    watchlist = watchlist.filter((movie) => movie.id !== movieId);
+    let watchlist = this.getWatchlistIdsSync();
+    watchlist = watchlist.filter((id) => id !== movieId);
     localStorage.setItem(this.watchlistKey, JSON.stringify(watchlist));
   }
+
+  private getWatchlistIdsSync(): number[] {
+    const watchlistStr = localStorage.getItem(this.watchlistKey);
+    return watchlistStr ? JSON.parse(watchlistStr) : [];
+  }
+
 
 
 
