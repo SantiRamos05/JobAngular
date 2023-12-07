@@ -1,18 +1,23 @@
-<div *ngIf="movie" class="movie-detail-container mb-2">
+<div *ngIf="movies" class="movie-detail-container mb-2">
   <div class="card mt-2 mb-2">
     <div class="card-body">
       <div class="row g-0">
         <div class="col-md-4">
-          <img [src]="movie.image" alt="{{ movie.Title }}" class="img-fluid rounded-start" >
+          <img [src]="movies.image" alt="{{ movies.Title }}" class="img-fluid rounded-start" >
         </div>
         <div class="col-md-8">
           <div class="card-body">
-            <h5 class="card-title">{{ movie.Title }}</h5>
-            <p class="card-text">{{ movie.Description }}</p>
-            <p class="card-text">Genre: {{ movie.Genre }}</p>
-            <p class="card-text"><small class="text-body-secondary">Rating: {{ movie.Rating }}</small></p>
-            <p class="card-text"><small class="text-body-secondary">Released date: {{ movie['Released date'] }}</small></p>
-            <p class="card-text"><small class="text-body-secondary">Duration: {{ movie.Duration }}</small></p>
+            <div class="header-bar">
+              <button (click)="toggleWatchlist()" [ngClass]="{'watchlist-active': movies.isInWatchlist}">
+                <i class="fa fa-heart"></i>
+              </button>
+            </div>
+            <h5 class="card-title">{{ movies.Title }}</h5>
+            <p class="card-text">{{ movies.Description }}</p>
+            <p class="card-text">Genre: {{ movies.Genre }}</p>
+            <p class="card-text"><small class="text-body-secondary">Rating: {{ movies.Rating }}</small></p>
+            <p class="card-text"><small class="text-body-secondary">Released date: {{ movies['Released date'] }}</small></p>
+            <p class="card-text"><small class="text-body-secondary">Duration: {{ movies.Duration }}</small></p>
           </div>
         </div>
       </div>

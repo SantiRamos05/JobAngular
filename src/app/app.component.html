@@ -1,9 +1,16 @@
 <!-- Navigation bar -->
 <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand">Movies App</a>
+    <a class="navbar-brand" [routerLink]="['/']">Movies App</a>
       <a class="btn btn-outline-success" type="button" [routerLink]="['/watchlist']"><i class="fa fa-heart"></i></a>
 
   </div>
 </nav>
 <router-outlet></router-outlet>
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-4 d-flex align-items-center">
+      <span class="mb-3 mb-md-0 text-body-secondary">&copy; Movies App</span>
+    </div>
+  </footer>
+</div>

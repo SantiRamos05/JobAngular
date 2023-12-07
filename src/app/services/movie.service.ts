@@ -63,7 +63,7 @@ export class MovieService {
     localStorage.setItem(this.watchlistKey, JSON.stringify(watchlist));
   }
 
-  private getWatchlistIdsSync(): number[] {
+  getWatchlistIdsSync(): number[] {
     const watchlistStr = localStorage.getItem(this.watchlistKey);
     return watchlistStr ? JSON.parse(watchlistStr) : [];
   }

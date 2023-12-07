@@ -5,3 +5,22 @@
   margin: 0 auto;
 }
 
+.header-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #3498db;
+  padding: 5px;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: white;
+}
+
+.watchlist-active {
+  color: red;
+}

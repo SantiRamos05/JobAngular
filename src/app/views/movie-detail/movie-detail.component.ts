@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
+import { Movie } from 'src/app/models/movie.model';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class MovieDetailComponent implements OnInit {
 
-  movie: any;
+  movies: any;
   trailerUrl!: SafeResourceUrl;
 
   constructor(private route: ActivatedRoute, private movieService: MovieService, private sanitizer: DomSanitizer) { }
@@ -19,8 +20,10 @@ export class MovieDetailComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const movieId = Number(params.get('id'));
       this.movieService.getMovieById(movieId).subscribe(movie => {
-        this.movie = movie;
+        this.movies = movie;
         this.trailerUrl = this.getVideoEmbedLink(movie['Trailer Link']);
+        let watchlistIds = this.movieService.getWatchlistIdsSync();
+        this.movies.isInWatchlist = watchlistIds.includes(movie.id);
         console.log(movie);
       });
     });
@@ -37,4 +40,7 @@ export class MovieDetailComponent implements OnInit {
     return match ? match[1] : '';
   }
 
+  toggleWatchlist(): void {
+    this.movieService.updateWatchlistStatus(this.movies);
+  }
 }
